@@ -22,23 +22,38 @@ body {
     justify-content: center;
 }
 
-img {
-    max-width:100%;
-    max-height:100%;
+#left-img,
+#right-img {
+    flex: 1;
     height: 100%;
-    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#left-img {
+    background-image: url(../images/left.png);
+}
+
+#right-img {
+    background-image: url(../images/right.png);
 }
 
 #center {
     background-image: url(../images/background-art.png);
-    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     text-align: center;
 }
 
 #header {
     margin-top: 10vh;
     margin-bottom: 10px;
-    font-size: 48px;
+    font-size: 60px;
+    text-shadow: 1px 1px 2px orangered,
+                 -1px 1px 2px orangered,
+                 -1px -1px 2px orangered,
+                 1px -1px 2px orangered;
 }
 
 #UI-layout {
@@ -46,7 +61,7 @@ img {
     display: flex;
     justify-content: center;
     width: fit-content;
-    gap: 10vw;
+    gap: 2vw;
     border: 1px solid black;
     border-radius: 10px;
     background-color: aliceblue;
