@@ -7,17 +7,17 @@ const dimText = document.querySelector("#dim-text");
 const flexLine = document.createElement('div');
 flexLine.classList.add('line');
 const divSquare = document.createElement('div');
-divSquare.classList.add('square')
+divSquare.classList.add('square');
 
 let currentLines = dimText.value;
 
 drawGrid(currentLines);
 
-dimButton.addEventListener('click', updateGrid)
+dimButton.addEventListener('click', updateGrid);
 
 function updateGrid() {
-    clearGridDim()
-    drawGrid()
+    clearGridDim();
+    drawGrid();
 }
 
 //function used to draw grid, utilizing predefined line and square elements.
@@ -25,23 +25,24 @@ function drawGrid() {
     currentLines = dimText.value;
 
     if (currentLines.match(/^[0-9]+$/) === null) {
-        dimText.setAttribute('style', 'border-bottom-color: red;')
+        dimText.setAttribute('style', 'border-bottom-color: red;');
         return;
     }  
     currentLines = parseInt(currentLines);
 
     if (currentLines <= 0) {
-        dimText.setAttribute('style', 'border-bottom-color: red;')
+        dimText.setAttribute('style', 'border-bottom-color: red;');
         return;
     } else if (currentLines > 100) {
         currentLines = 100;
     };
 
-    dimText.setAttribute('style', 'border-bottom-color: #f7d0cb;')
+    dimText.setAttribute('style', 'border-bottom-color: #f7d0cb;');
     for (let i = 0; i < currentLines; i++) { 
         let newLine = flexLine.cloneNode(true) 
         for (let j = 0; j < currentLines; j++){
             let newSquare = divSquare.cloneNode(true);
+            preventDrag(newSquare);
             newLine.appendChild(newSquare);
         }
         container.appendChild(newLine);
@@ -51,6 +52,13 @@ function drawGrid() {
 //clear the grid dimensions to draw a new one
 function clearGridDim() {
     const currentGridLines = document.querySelectorAll(".line");
-    console.log(currentGridLines)
-    currentGridLines.forEach(line => line.remove())
+    console.log(currentGridLines);
+    currentGridLines.forEach(line => line.remove());
+}
+
+//prevents divs from being dragged
+function preventDrag(element) {
+    element.addEventListener("dragstart", (e) => {
+        e.preventDefault();
+    });
 }
