@@ -3,7 +3,8 @@ const container = document.querySelector("#container");
 const dimButton = document.querySelector("#dim-button");
 const clearButton = document.querySelector("#clear");
 const eraseButton = document.querySelector("#erase");
-const randButton = document.querySelector("#random-color")
+const randButton = document.querySelector("#random-color");
+const colorText = document.querySelector('#num-text')
 const dimText = document.querySelector("#dim-text");
 
 //create default elements used in grid creation
@@ -24,6 +25,8 @@ dimButton.addEventListener('click', updateGrid);
 clearButton.addEventListener('click', clearGrid);
 eraseButton.addEventListener('click', toggleErase);
 randButton.addEventListener('click', toggleRandom);
+colorText.addEventListener('change', setCustomColor);
+
 
 function updateGrid() {
     clearGridDim();
@@ -69,9 +72,11 @@ function toggleRandom() {
     if (!rand) {
         rand = true;
         previousColor = color;
+        randButton.setAttribute('style', 'background-color: #000000; color: #FFDFC6;');
     } else {
         rand = false;
         color = previousColor;
+        randButton.setAttribute('style', 'background-color: #FFDFC6; color: #000000;');
     }
 }
 
@@ -80,7 +85,7 @@ function generateRandomColor() {
     for (let i = 0; i < 3; i++) {
         colorString += Math.floor(Math.random() * 256).toString(16);
     }
-    
+
     return colorString;
 }
 
@@ -94,9 +99,21 @@ function toggleErase() {
         erase = true;
         previousColor = color;
         color = '#ffffff';
+        eraseButton.setAttribute('style', 'background-color: #000000; color: #FFDFC6;');
     } else {
         erase = false;
         color = previousColor;
+        eraseButton.setAttribute('style', 'background-color: #FFDFC6; color: #000000;');
+    }
+}
+
+function setCustomColor() {
+    if (this.value.match(/^#[a-f0-9]{6}$/) === null) {
+        this.setAttribute('style', 'border-bottom-color: red;');
+        return;
+    } else {
+        color = this.value;
+        this.setAttribute('style', 'border-bottom-color: #f7d0cb;');
     }
 }
 
