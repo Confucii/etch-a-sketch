@@ -61,11 +61,46 @@ body {
     display: flex;
     justify-content: center;
     width: fit-content;
-    gap: 2vw;
+    gap: 1vw;
     border: 1px solid black;
     border-radius: 10px;
     background-color: aliceblue;
 }
+
+#control-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+#dimensions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#dim-text {
+    font-size: 36px;
+    font-family: inherit;
+    text-align: center;
+    height: auto;
+    width: 5vw;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 4px dashed #f7d0cb;
+    background-color: aliceblue;
+}
+
+#dim-text:focus {
+    outline: none;
+}
+
+#dim-button {
+    width: 10vw;
+    font-size: 24px;
+    background-color: #FFDFC6;
+    border-radius: 5px;
+}
+
 
 button {
     font-family: inherit;
