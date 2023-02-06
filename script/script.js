@@ -3,7 +3,7 @@ const container = document.querySelector("#container");
 const dimButton = document.querySelector("#dim-button");
 const clearButton = document.querySelector("#clear");
 const eraseButton = document.querySelector("#erase");
-const randButton = document.querySelector("#random-button")
+const randButton = document.querySelector("#random-color")
 const dimText = document.querySelector("#dim-text");
 
 //create default elements used in grid creation
@@ -22,7 +22,8 @@ drawGrid(currentLines);
 
 dimButton.addEventListener('click', updateGrid);
 clearButton.addEventListener('click', clearGrid);
-eraseButton.addEventListener('click', toggleErase)
+eraseButton.addEventListener('click', toggleErase);
+randButton.addEventListener('click', toggleRandom);
 
 function updateGrid() {
     clearGridDim();
@@ -59,18 +60,11 @@ function drawGrid() {
     } 
 }
 
-//annul the mutually exclusive
-function annulProperties() {
-    if (erase) {
-        toggleErase();
-    } else if (rand) {
-        toggleRandom();
-    }
-}
-
 //toggle randomness
 function toggleRandom() {
-    annulProperties();
+    if (erase) {
+        toggleErase();
+    }
 
     if (!rand) {
         rand = true;
@@ -81,9 +75,20 @@ function toggleRandom() {
     }
 }
 
+function generateRandomColor() {
+    colorString = "#";
+    for (let i = 0; i < 3; i++) {
+        colorString += Math.floor(Math.random() * 256).toString(16);
+    }
+    
+    return colorString;
+}
+
 //set erase properties
 function toggleErase() {
-    annulProperties();
+    if (rand) {
+        toggleRandom();
+    }
 
     if (!erase) {
         erase = true;
@@ -104,7 +109,6 @@ function clearGridDim() {
 //clear the grid from drawings
 function clearGrid() {
     const currentSquares = document.querySelectorAll(".square");
-    console.log(currentSquares)
     currentSquares.forEach(square => square.setAttribute("style", `background-color: #ffffff`));
 }
 
@@ -124,7 +128,7 @@ function fillDiv(element, color = '#000000') {
 function addDrawer(element) {
     element.addEventListener("mouseenter", (e) => {
         if (rand) {
-
+            color = generateRandomColor();
         }
 
         if (e.buttons === 1) {
