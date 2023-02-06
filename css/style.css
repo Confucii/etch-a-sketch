@@ -70,6 +70,7 @@ body {
 #control-menu {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 #dimensions {
@@ -97,14 +98,21 @@ body {
 #dim-button {
     width: 10vw;
     font-size: 36px;
-    background-color: #FFDFC6;
-    border-radius: 5px;
     height: 10vh;
 }
 
 
 button {
+    background-color: #FFDFC6;
+    border-radius: 5px;
     font-family: inherit;
+    font-size: 36px;
+    transition: all 0.2s ease;
+}
+
+button:active {
+    background-color: black;
+    color: black;
 }
 
 #container {
