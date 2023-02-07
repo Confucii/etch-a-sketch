@@ -83,7 +83,13 @@ function toggleRandom() {
 function generateRandomColor() {
     colorString = "#";
     for (let i = 0; i < 3; i++) {
-        colorString += Math.floor(Math.random() * 256).toString(16);
+        check = Math.floor(Math.random() * 256).toString(16);
+
+        if (check.length === 1) {
+            check = "0" + check;
+        }
+
+        colorString += check;
     }
 
     return colorString;
