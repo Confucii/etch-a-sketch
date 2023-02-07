@@ -114,7 +114,7 @@ function toggleErase() {
 }
 
 function setCustomColor() {
-    if (this.value.match(/^#[a-f0-9]{6}$/) === null) {
+    if (this.value.match(/^#[A-Fa-f0-9]{6}$/) === null) {
         this.setAttribute('style', 'border-bottom-color: red;');
         return;
     } else {
