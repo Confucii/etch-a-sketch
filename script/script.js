@@ -149,6 +149,10 @@ function fillDiv(element, color = '#000000') {
 
 //add functionality to allow mouse cursor to fill divs if when cursor is entering if left mouse button is pushed
 function addDrawer(element) {
+    element.addEventListener("mousedown", (e) => {
+        fillDiv(e.currentTarget, color);
+    });
+
     element.addEventListener("mouseenter", (e) => {
         if (rand) {
             color = generateRandomColor();

@@ -11,11 +11,6 @@ body {
     font-family: 'Hey-August', Verdana, 'Geneva', Tahoma, sans-serif;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
 #layout {
     display: flex;
     height: 100%;
@@ -162,4 +157,8 @@ button:active {
     text-align: center;
     font-size: 24px;
     padding: 8px 0px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
