@@ -1,4 +1,4 @@
-# etch-a-sketch
+# Etch-a-sketch
 Odin project etch-a-sketch. This project is a simple drawing tool, the drawing is done by filling a grid of divs created in JS and giving them background color. This project purpose is to practice the DOM manipulation skills.
 ## [Live Demo](https://confucii.github.io/etch-a-sketch//)
 
